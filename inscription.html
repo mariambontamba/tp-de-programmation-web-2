@@ -1,0 +1,168 @@
+<?php 
+
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription Étudiants | Formulaire d'inscription</title>
+    <link rel="stylesheet" href="inscriptioncss.css">
+</head>
+<body>
+    <a href="index.html" ><button style="position: relative;
+        top: -297px;
+        right: -700px;
+        height:18px ;
+        background-color:#f80707;
+        border-radius: 5px;
+        width: 30px;
+        color: white;"> X </button></a>
+
+    <div class="container">
+        <div class="form-container">
+            <div class="form-header">
+                <h1>📚 Inscription Étudiante</h1>
+                <p>Créez votre compte pour accéder à nos services éducatifs</p>
+            </div>
+
+            <form id="registrationForm">
+                <!-- Informations personnelles -->
+                <div class="form-section">
+                    <h2>Informations personnelles</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">Nom</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                            <span class="error-message" id="firstNameError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastName">Post nom</label>
+                            <input type="text" id="lastName" name="lastName"required>
+                            <span class="error-message" id="lastNameError"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="birthDate">Date de naissance </label>
+                            <input type="date"  required>
+                            <span class="error-message" id="birthDateError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gender">Genre </label>
+                            <select id="gender" name="gender" required>
+                                <option value="">Sélectionnez</option>
+                                <option value="female">Féminin</option>
+                                <option value="male">Masculin</option>
+                                <option value="other">Autre</option>
+                            </select>
+                            <span class="error-message" id="genderError"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Adresse complète</label>
+                        <textarea id="address" name="address" rows="3"></textarea>
+                    </div>
+                </div>
+
+                <!-- Coordonnées -->
+                <div class="form-section">
+                    <h2>Coordonnées</h2>
+                    
+                    <div class="form-group">
+                        <label for="email">Adresse email </label>
+                        <input type="email" id="email" name="email" required>
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Numéro de téléphone </label>
+                        <input type="tel" id="phone" name="phone" required>
+                        <span class="error-message" id="phoneError"></span>
+                    </div>
+                </div>
+
+                <!-- Informations académiques -->
+                <div class="form-section">
+                    <h2>Informations académiques</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="studentId">Matricule étudiant </label>
+                            <input type="text" id="studentId" name="studentId" required>
+                            <span class="error-message" id="studentIdError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="level">Niveau d'étude </label>
+                            <select id="level" name="level" required>
+                                <option value="">Sélectionnez</option>
+                                <option value="licence1">Licence 1</option>
+                                <option value="licence2">Licence 2</option>
+                                <option value="licence3">Licence 3</option>
+                                <option value="master1">Master 1</option>
+                                <option value="master2">Master 2</option>
+                                <option value="doctorat">Doctorat</option>
+                            </select>
+                            <span class="error-message" id="levelError"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="faculty">Faculté / Département </label>
+                            <select id="level" name="level" required>
+                                <option value="">Sélectionnez</option>
+                                <option value="informatique">informatique</option>
+                                <option value="médecine">médecine</option>
+                                <option value="droit">droit</option>
+                                <option value="economie">economie</option>
+                                <option value="science de santé">science de santé</option>
+                                <option value="communication">communication</option>
+                            </select>
+        
+                            <span class="error-message" id="facultyError"></span>
+                        </div>
+
+                <!-- Sécurité -->
+                <div class="form-section">
+                    <h2>Sécurité</h2>
+                    
+                    <div class="form-group">
+                        <label for="password">Mot de passe </label>
+                        <div class="password-input">
+                            <input type="password" id="password" name="password" required>
+                            <span class="toggle-password" onclick="togglePassword('password')">👁️</span>
+                        </div>
+                        <div class="password-strength" id="passwordStrength"></div>
+                        <span class="error-message" id="passwordError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirmer le mot de passe </label>
+                        <div class="password-input">
+                            <input type="password" id="confirmPassword" name="confirmPassword" required>
+                            <span class="toggle-password" onclick="togglePassword('confirmPassword')">👁️</span>
+                        </div>
+                        <span class="error-message" id="confirmPasswordError"></span>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-reset" onclick="resetForm()">Réinitialiser</button>
+                    <button type="submit" class="btn-submit">S'inscrire</button>
+                </div>
+
+            </form>
+
+            <div id="message" class="message"></div>
+        </div>
+    </div>
+
+    <script src="inscriptionjs.js"></script>
+</body>
+</html>

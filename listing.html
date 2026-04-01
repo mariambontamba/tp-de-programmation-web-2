@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Étudiants | Gestion des inscriptions</title>
+    <link rel="stylesheet" href="listingcss.css">
+    <link rel="stylesheet" href="listingcss.css">
+</head>
+<style>
+    table{
+        border-collapse:collapse;
+        width: 100%;
+        margin: auto;
+    }
+    td,th{
+        border: 1px solid black;
+        padding: 8px;
+        text-align:center;
+
+    }
+    
+
+    </style>
+<body >
+    
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1>
+                    <i class="fas fa-users"></i>
+                    Liste des Étudiants Inscrits
+                </h1>
+                <div class="header-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-user-graduate"></i>
+                        <span id="totalStudents">0</span>
+                        <small>Étudiants</small>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span id="newThisMonth">0</span>
+                        <small>Nouveaux ce mois</small>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-chart-line"></i>
+                        <span id="activeStudents">0</span>
+                        <small>Actifs</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="controls">
+            <div class="search-section">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Rechercher par nom, email ou matricule...">
+                </div>
+                <table width="100%"style="border: 1px solid black; padding: 8px; text-align :left;">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Post Nom</th>
+                <th>Date de naissance</th>
+                <th>Genre</th>
+                <th>Adresse complete</th>
+                <th>Adresse email</th>
+                <th>Numero telephone</th>
+                <th>Matricule etudiant</th>
+                <th>Niveau d'etude</th>
+                <th>Faculté</th>
+</tr>
+<tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+</tr>
+<tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+</tr>
+<tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+</tr>
+<tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+</tr>
+<tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+</tr>
+<tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+</tr>
+<tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+</tr>
+<tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+</tr>
+</thead>
+</table>
+                <div class="filter-section">
+                    <select id="levelFilter">
+                        <option value="">Tous les niveaux</option>
+                        <option value="licence1">Licence 1</option>
+                        <option value="licence2">Licence 2</option>
+                        <option value="licence3">Licence 3</option>
+                        <option value="master1">Master 1</option>
+                        <option value="master2">Master 2</option>
+                        <option value="doctorat">Doctorat</option>
+                    </select>
+                    <select id="facultyFilter">
+                        <option value="">Toutes les facultés</option>
+                    </select>
+                    <button id="resetFilters" class="btn-reset">
+                        <i class="fas fa-undo-alt"></i> Réinitialiser
+                    </button>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button id="exportBtn" class="btn-export">
+                    <i class="fas fa-download"></i> Exporter CSV
+                </button>
+                <button id="printBtn" class="btn-print">
+                    <i class="fas fa-print"></i> Imprimer
+                </button>
+                <a href="register.html" class="btn-add">
+                    <i class="fas fa-plus"></i> Nouvelle Inscription
+                </a>
+            </div>
+        </div>
+
+        <div class="sort-section">
+            <div class="sort-controls">
+                <span class="sort-label">Trier par :</span>
+                <div class="sort-buttons">
+                    <button class="sort-btn" data-sort="name">
+                        <i class="fas fa-user"></i> Nom
+                        <span class="sort-icon"></span>
+                    </button>
+                    <button class="sort-btn" data-sort="date">
+                        <i class="fas fa-calendar"></i> Date d'inscription
+                        <span class="sort-icon"></span>
+                    </button>
+                    <button class="sort-btn" data-sort="level">
+                        <i class="fas fa-graduation-cap"></i> Niveau
+                        <span class="sort-icon"></span>
+                    </button>
+                    <button class="sort-btn" data-sort="studentId">
+                        <i class="fas fa-id-card"></i> Matricule
+                        <span class="sort-icon"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="view-toggle">
+                <button id="gridViewBtn" class="view-btn active">
+                    <i class="fas fa-th-large"></i>
+                </button>
+                <button id="listViewBtn" class="view-btn">
+                    <i class="fas fa-list"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="studentsContainer" class="students-container grid-view">
+            <!-- Les étudiants seront affichés ici dynamiquement -->
+        </div>
+
+        <div id="pagination" class="pagination">
+            <!-- Pagination sera générée ici -->
+        </div>
+    </div>
+
+    <!-- Modal pour les détails de l'étudiant -->
+    <div id="studentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Détails de l'étudiant</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div id="studentDetails" class="modal-body">
+                <!-- Détails de l'étudiant seront affichés ici -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de confirmation pour la suppression -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content modal-small">
+            <div class="modal-header">
+                <h2>Confirmer la suppression</h2>
+                <span class="close-delete">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Êtes-vous sûr de vouloir supprimer cet étudiant ?</p>
+                <p class="student-name"></p>
+                <div class="modal-actions">
+                    <button id="confirmDelete" class="btn-danger">Supprimer</button>
+                    <button id="cancelDelete" class="btn-secondary">Annuler</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="listingjs.js"></script>
+</body>
+</html>
+
